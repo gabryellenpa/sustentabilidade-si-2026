@@ -1,5 +1,5 @@
 import React from 'react';
-import { Leaf, PlusCircle, Calendar, Home, RefreshCw, Smartphone, Laptop } from 'lucide-react';
+import { Leaf, PlusCircle, Calendar, Home,  Smartphone, Laptop } from 'lucide-react';
 import { MonthlyRecord } from '../types/sustainability';
 import { Button } from './ui/Button';
 import { Badge } from './ui/Badge';
@@ -19,7 +19,7 @@ export const Header: React.FC<HeaderProps> = ({
   selectedMonthId,
   onSelectMonth,
   onOpenForm,
-  onResetData,
+  
 }) => {
   return (
     <header className="w-full pt-6 pb-4">
@@ -43,15 +43,7 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Action Buttons */}
         <div className="flex items-center gap-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={onResetData}
-            title="Restaurar dados do protótipo"
-            icon={<RefreshCw className="w-3.5 h-3.5" />}
-          >
-            Demo
-          </Button>
+          
           
           <Button
             variant="primary"

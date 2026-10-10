@@ -7,7 +7,7 @@ import {
   Home,
   Save,
   ShieldCheck,
-  Sparkles,
+  
 } from 'lucide-react';
 import { Modal } from './ui/Modal';
 import { Button } from './ui/Button';
@@ -70,21 +70,7 @@ export const RecordFormModal: React.FC<RecordFormModalProps> = ({
     setReciclagemKg(somaMateriais);
   };
 
-  const handlePreencherExemplo = () => {
-    setMesAno('2026-09');
-    setMesNome('Setembro 2026');
-    setTipoImovel('Residência');
-    setEnergiaKwh(189);
-    setAguaM3(7.9);
-    setReciclagemKg(14.6);
-    setMetaEnergiaKwh(200);
-    setMetaAguaM3(8.5);
-    setMetaReciclagemKg(12.0);
-    setPapelKg(5.55);
-    setPlasticoKg(3.94);
-    setVidroKg(2.92);
-    setMetalKg(2.19);
-  };
+ 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -401,15 +387,7 @@ export const RecordFormModal: React.FC<RecordFormModalProps> = ({
 
         {/* Rodapé com Ações */}
         <div className="pt-4 border-t border-stone-100 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={handlePreencherExemplo}
-            icon={<Sparkles className="w-3.5 h-3.5 text-emerald-600" />}
-          >
-            Preencher valores padrão (Demo)
-          </Button>
+        
 
           <div className="flex items-center gap-2 w-full sm:w-auto">
             <Button

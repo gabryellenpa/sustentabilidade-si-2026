@@ -1,86 +1,82 @@
-# EcoDashboard Sustentável — Consumos & Reciclagem 🌿
+# Sustenteco 🌿 — Consumos & Reciclagem
 
-Painel interativo e responsivo (Mobile & Desktop) para acompanhamento sustentável de consumo de **energia elétrica (kWh)**, **água tratada (m³)**, **reciclagem total (kg)** e detalhamento por materiais (**papel, plástico, vidro e metal**), com comparação de metas e evolução mensal.
+Painel interativo e responsivo (mobile e desktop) para acompanhar o consumo de **energia elétrica (kWh)**, **água tratada (m³)** e **reciclagem (kg)**, com detalhamento por material (papel, plástico, vidro e metal), comparação com metas e evolução mensal.
 
 Inspirado no protótipo [Vista Verde Lar](https://vista-verde-lar.lovable.app/).
 
----
+Projeto de Extensão Interprofissional · Desenvolvimento Sustentável.
 
-## 🔒 Princípio de Privacidade: 100% no Dispositivo (Sem Backend)
+## 🔒 Privacidade: 100% no dispositivo
 
-- **Zero servidores**: Nenhum dado é enviado para APIs externas.
-- **Armazenamento no LocalStorage**: Os dados inseridos pelo usuário (faturas de energia, leituras de hidrômetro e pesagens de reciclagem) ficam gravados apenas no navegador do seu smartphone ou computador.
-- **Sem login / Sem cadastro**: O usuário abre o app e já pode usar imediatamente.
+- **Sem servidores:** nenhum dado é enviado para APIs externas.
+- **LocalStorage:** faturas de energia, leituras de hidrômetro e pesagens de reciclagem ficam salvas apenas no navegador do usuário.
+- **Sem login e sem cadastro:** abriu, já pode usar.
 
----
+## ✨ Funcionalidades
 
-## 👥 Arquitetura Colaborativa (Guia para os Membros da Equipe)
+- KPIs do mês: energia, água e reciclagem com status em relação à meta
+- Gráfico de evolução mensal (comparativo ou por categoria)
+- Progresso das metas do mês (limite de energia e água, mínimo de reciclagem)
+- Gráfico de rosca com a composição dos materiais reciclados
+- Formulário para inserir/editar leituras mensais e metas
+- Guia rápido para encontrar os dados nas contas
+- Layout mobile-first; o modal vira folha inferior no celular
 
-Este projeto foi desenhado de forma desacoplada para facilitar a divisão de tarefas entre os desenvolvedores:
+## 🛠️ Tecnologias
 
-- **Camada de UI / Apresentação (Implementada aqui)**:
-  - Layout responsivo Mobile-First & Desktop expansivo com Tailwind CSS.
-  - Componentes modulares (`Header`, `KpiCards`, `MonthlyEvolutionChart`, `GoalsProgressSection`, `RecyclingPieChart`, `RecordFormModal`, `QuickTipsCard`, `Footer`).
-  - Formulário completo para inclusão/edição de leituras mensais e metas.
-  - Modal adaptável (Bottom Sheet no celular, Modal centralizado no computador).
+React · TypeScript · Vite · Tailwind CSS
 
-- **Onde conectar a Lógica de Negócio e Processamento de Dados**:
-  - `src/types/sustainability.ts`: Contrato de dados e tipagens TypeScript (`MonthlyRecord`, `MonthlyGoals`, `RecyclingBreakdown`, `ProcessedDashboardMetrics`).
-  - `src/hooks/useSustainabilityData.ts`: Central de gerenciamento do LocalStorage e ponto ideal para plugar novos algoritmos de média móvel, previsão de consumo, estimativa de pegada de carbono (CO₂ economizado), etc.
-  - `src/components/MonthlyEvolutionChart.tsx` e `src/components/RecyclingPieChart.tsx`: Componentes de gráfico que recebem métricas já processadas via props, permitindo plugar bibliotecas externas caso a equipe decida (como Recharts ou Chart.js) sem alterar a estrutura de telas.
+## 🚀 Como executar
 
----
+Pré-requisito: [Node.js](https://nodejs.org/) 18 ou superior.
 
-## 🚀 Como Executar o Projeto
+```bash
+# clone o repositório
+git clone <URL-DO-REPOSITORIO>
+cd <NOME-DA-PASTA>
 
-1. Certifique-se de ter o **Node.js** (versão 18+ ou 20+) instalado.
-2. Navegue até o diretório do projeto:
-   ```bash
-   cd /home/rayan/.gemini/antigravity/scratch/dashboard-sustentavel
-   ```
-3. Instale as dependências:
-   ```bash
-   npm install
-   ```
-4. Inicie o servidor de desenvolvimento:
-   ```bash
-   npm run dev
-   ```
-5. Abra o link informado no terminal (normalmente `http://localhost:3000` ou `http://localhost:5173`) no navegador do seu computador ou no navegador do smartphone na mesma rede Wi-Fi.
+# instale as dependências
+npm install
 
----
-
-## 📊 Estrutura de Arquivos
-
-```text
-dashboard-sustentavel/
-├── index.html
-├── package.json
-├── postcss.config.js
-├── tailwind.config.js
-├── tsconfig.json
-├── vite.config.ts
-├── README.md
-└── src/
-    ├── main.tsx
-    ├── App.tsx
-    ├── index.css
-    ├── types/
-    │   └── sustainability.ts        # Contratos de tipos e dados
-    ├── hooks/
-    │   └── useSustainabilityData.ts # LocalStorage, estado e cálculos iniciais
-    └── components/
-        ├── Header.tsx               # Topbar, seletor de mês e ações
-        ├── KpiCards.tsx             # 3 Cards principais (kWh, m³, kg)
-        ├── MonthlyEvolutionChart.tsx# Gráfico de evolução mensal
-        ├── GoalsProgressSection.tsx # Realizado vs Metas do mês
-        ├── RecyclingPieChart.tsx    # Gráfico de pizza/donut e materiais
-        ├── RecordFormModal.tsx      # Formulário de entrada de dados
-        ├── QuickTipsCard.tsx        # Guia para leitura de contas
-        ├── Footer.tsx               # Informações de privacidade
-        └── ui/
-            ├── Badge.tsx
-            ├── Button.tsx
-            ├── Card.tsx
-            └── Modal.tsx
+# inicie o servidor de desenvolvimento
+npm run dev
 ```
+
+Abra o endereço mostrado no terminal (geralmente `http://localhost:5173`). Para testar no celular, use o mesmo Wi-Fi do computador e acesse pelo IP da máquina.
+
+## 📁 Estrutura
+
+```
+src/
+├── main.tsx
+├── App.tsx
+├── index.css
+├── types/
+│   └── sustainability.ts         # Contratos de tipos e dados
+├── hooks/
+│   └── useSustainabilityData.ts  # LocalStorage, estado e cálculos
+└── components/
+    ├── Header.tsx                # Topo, seletor de mês e ações
+    ├── KpiCards.tsx              # Cards de kWh, m³ e kg
+    ├── MonthlyEvolutionChart.tsx # Evolução mensal
+    ├── GoalsProgressSection.tsx  # Realizado vs. metas
+    ├── RecyclingPieChart.tsx     # Rosca e materiais
+    ├── RecordFormModal.tsx       # Formulário de dados
+    ├── QuickTipsCard.tsx         # Guia de leitura das contas
+    ├── Footer.tsx                # Informações de privacidade
+    └── ui/                       # Badge, Button, Card, Modal
+```
+
+## 👥 Guia para a equipe
+
+O projeto é desacoplado para facilitar a divisão de tarefas:
+
+- **Interface (pronta):** layout responsivo, componentes modulares, formulário de leituras e metas.
+- **Dados e lógica:**
+  - `src/types/sustainability.ts`: tipos `MonthlyRecord`, `MonthlyGoals`, `RecyclingBreakdown` e `ProcessedDashboardMetrics`.
+  - `src/hooks/useSustainabilityData.ts`: gerencia o LocalStorage e é o lugar ideal para novos cálculos (média móvel, previsão de consumo, estimativa de CO₂ evitado).
+- **Gráficos:** `MonthlyEvolutionChart.tsx` e `RecyclingPieChart.tsx` recebem métricas já processadas via props, então dá para trocar por Recharts ou Chart.js sem mexer nas telas.
+
+## 📄 Licença
+
+Projeto acadêmico de extensão universitária.
